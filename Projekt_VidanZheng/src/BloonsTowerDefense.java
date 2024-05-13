@@ -103,8 +103,8 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
 
         mapImage = mapImage.getScaledInstance(775, 570, Image.SCALE_SMOOTH);
 
-        money = 999_999;
-        lives = 200;
+        money = 650;
+        lives = 100;
         round = 0;
         currentMonkey = "";
 
