@@ -2,9 +2,9 @@ import java.awt.*;
 import javax.swing.*;
 
 public class BTD_SideBar extends JPanel {
-    private final Image sideBarRightImage = new ImageIcon("src/Data Files/sidePanel.png").getImage().getScaledInstance(200, 600, Image.SCALE_SMOOTH);
-    private final Image sideBarBottomImage = new ImageIcon("src/Data Files/bottomPanel.png").getImage().getScaledInstance(960, 150, Image.SCALE_SMOOTH);
-    private final Image monkeyImage = new ImageIcon("src/Data Files/frame.png").getImage();
+    private final Image sideBarRightImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\sidePanel.png").getImage().getScaledInstance(200, 600, Image.SCALE_SMOOTH);
+    private final Image sideBarBottomImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\bottomPanel.png").getImage().getScaledInstance(960, 150, Image.SCALE_SMOOTH);
+    private final Image monkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\frame.png").getImage();
 
     private int money;
     private int lives;

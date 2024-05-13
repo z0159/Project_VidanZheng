@@ -3,21 +3,21 @@ import java.awt.*;
 import javax.swing.*;
 
 public class BTD_Bloons {
-    private final Image redBloonImage = new ImageIcon("src/Data Files/red.png").getImage();
-    private final Image blueBloonImage = new ImageIcon("src/Data Files/blue.png").getImage();
-    private final Image greenBloonImage = new ImageIcon("src/Data Files/green.png").getImage();
-    private final Image yellowBloonImage = new ImageIcon("src/Data Files/yellow.png").getImage();
-    private final Image pinkBloonImage = new ImageIcon("src/Data Files/purple.png").getImage();
-    private final Image blackBloonImage = new ImageIcon("src/Data Files/black.png").getImage();
-    private final Image whiteBloonImage = new ImageIcon("src/Data Files/white.png").getImage();
-    private final Image camoBloonImage = new ImageIcon("src/Data Files/camo.png").getImage();
-    private final Image leadBloonImage = new ImageIcon("src/Data Files/lead.png").getImage();
-    private final Image zebraBloonImage = new ImageIcon("src/Data Files/zebra.png").getImage();
-    private final Image rainbowBloonImage = new ImageIcon("src/Data Files/rainbow.png").getImage();
-    private final Image ceramicBloonImage = new ImageIcon("src/Data Files/ceramic.png").getImage();
-    private final Image MOABBloonImage = new ImageIcon("src/Data Files/moab.png").getImage();
-    private final Image freezeImage = new ImageIcon("src/Data Files/freeze.png").getImage();
-    private final Image gluedImage = new ImageIcon("src/Data Files/glue.png").getImage();
+    private final Image redBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\red.png").getImage();
+    private final Image blueBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\blue.png").getImage();
+    private final Image greenBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\green.png").getImage();
+    private final Image yellowBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\yellow.png").getImage();
+    private final Image pinkBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\purple.png").getImage();
+    private final Image blackBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\black.png").getImage();
+    private final Image whiteBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\white.png").getImage();
+    private final Image camoBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\camo.png").getImage();
+    private final Image leadBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\lead.png").getImage();
+    private final Image zebraBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\zebra.png").getImage();
+    private final Image rainbowBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\rainbow.png").getImage();
+    private final Image ceramicBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\ceramic.png").getImage();
+    private final Image MOABBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\moab.png").getImage();
+    private final Image freezeImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\freeze.png").getImage();
+    private final Image gluedImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\glue.png").getImage();
 
     public double x;
     public double y;

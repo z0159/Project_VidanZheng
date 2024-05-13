@@ -60,7 +60,7 @@ public class BloonsTowerDefense extends JFrame implements ActionListener {
 
 
 class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
-    private Image mapImage = new ImageIcon("src/Data Files/map.png").getImage();
+    private Image mapImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\map.png").getImage();
     public boolean isReady;
     public int money;
     public int lives;
@@ -117,7 +117,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         DelayCounter = 0;
 
         try {
-            scanner = new Scanner(new File("src/bloons/Data Files/Round Data.txt"));
+            scanner = new Scanner(new File("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\Round Data.txt"));
         }
         catch (IOException ignored) {
         }

@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.geom.*;
 
 public class BTD_Dart {
-    private final Image dartMonkeyImage = new ImageIcon("src/Data Files/dart.png").getImage();
-    private final Image sniperMonkeyImage = new ImageIcon("src/Data Files/dart.png").getImage();
-    private final Image bombTowerImage = new ImageIcon("src/Data Files/bomb.png").getImage();
-    private final Image glueGunnerImage = new ImageIcon("src/Data Files/glue.png").getImage();
-    private final Image superMonkeyImage = new ImageIcon("src/Data Files/dart.png").getImage();
-    private final Image bombExplodingImage = new ImageIcon("src/Data Files/explosion.png").getImage();
+    private final Image dartMonkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\dart.png").getImage();
+    private final Image sniperMonkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\dart.png").getImage();
+    private final Image bombTowerImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\bomb.png").getImage();
+    private final Image glueGunnerImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\glue.png").getImage();
+    private final Image superMonkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\dart.png").getImage();
+    private final Image bombExplodingImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\explosion.png").getImage();
 
     public int x;
     public int y;

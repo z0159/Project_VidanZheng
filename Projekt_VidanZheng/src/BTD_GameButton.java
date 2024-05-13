@@ -3,8 +3,8 @@ import javax.swing.*;
 
 public class BTD_GameButton {
 
-    public Image fastForwardImage1 = new ImageIcon("src/Data Files/fastforwardoff.png").getImage();
-    public Image fastForwardImage2 = new ImageIcon("src/Data Files/fastforwardon.png").getImage();
+    public Image fastForwardImage1 = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\fastforwardoff.png").getImage();
+    public Image fastForwardImage2 = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\fastforwardon.png").getImage();
     public int x;
     public int y;
     public String label;
@@ -19,32 +19,32 @@ public class BTD_GameButton {
 
         switch (label) {
             case "dartMonkey" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/dartmonkey.jpg").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\dartmonkey.jpg").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
                 width = 50;
                 height = 50;
             }
             case "sniperMonkey" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/sniperMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\sniperMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
                 width = 50;
                 height = 50;
             }
             case "bombTower" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/bombTower.png").getImage().getScaledInstance(50, 55, Image.SCALE_SMOOTH);
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\bombTower.png").getImage().getScaledInstance(50, 55, Image.SCALE_SMOOTH);
                 width = 50;
                 height = 50;
             }
             case "iceTower" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/iceMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\iceMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
                 width = 50;
                 height = 50;
             }
             case "glueGunner" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/glueMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\glueMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
                 width = 50;
                 height = 50;
             }
             case "superMonkey" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/superMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\superMonkey.png").getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
                 width = 50;
                 height = 50;
             }
@@ -54,12 +54,12 @@ public class BTD_GameButton {
                 height = 69;
             }
             case "go" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/start.png").getImage();
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\start.png").getImage();
                 width = 100;
                 height = 40;
             }
             case "sell" -> {
-                currentFastForwardImage = new ImageIcon("src/Data Files/sell.png").getImage();
+                currentFastForwardImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\sell.png").getImage();
                 width = 100;
                 height = 100;
             }

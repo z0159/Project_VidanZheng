@@ -4,12 +4,12 @@ import javax.swing.*;
 import java.awt.geom.*;
 
 public class BTD_Monkey {
-    private final Image dartMonkeyImage = new ImageIcon("src/Data Files/dartmonkey.jpg").getImage();
-    private final Image sniperMonkeyImage = new ImageIcon("src/Data Files/sniperMonkey.png").getImage();
-    private final Image bombTowerImage = new ImageIcon("src/Data Files/bombTower.png").getImage();
-    private final Image iceTowerImage = new ImageIcon("src/Data Files/iceMonkey.png").getImage();
-    private final Image glueGunnerImage = new ImageIcon("src/Data Files/glueMonkey.png").getImage();
-    private final Image superMonkeyImage = new ImageIcon("src/Data Files/superMonkey.png").getImage();
+    private final Image dartMonkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\dartmonkey.jpg").getImage();
+    private final Image sniperMonkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\sniperMonkey.png").getImage();
+    private final Image bombTowerImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\bombTower.png").getImage();
+    private final Image iceTowerImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\iceMonkey.png").getImage();
+    private final Image glueGunnerImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\glueMonkey.png").getImage();
+    private final Image superMonkeyImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\superMonkey.png").getImage();
 
     public int x;
     public int y;
