@@ -1,0 +1,41 @@
+Round Data from: https://bloons.fandom.com/wiki/Rounds
+01 - 20 red
+02 - 30 red
+03 - 20 red;5 blue
+04 - 30 red;15 blue
+05 - 5 red;25 blue
+06 - 15 red;15 blue;4 green
+07 - 20 red;25 blue;5 green
+08 - 10 red;20 blue;14 green
+09 - 30 green
+10 - 102 blue
+11 - 10 red;10 blue;12 green;2 yellow
+12 - 15 blue;10 green;5 yellow
+13 - 100 red;23 green;4 yellow
+14 - 49 red;15 blue;10 green;9 yellow
+15 - 20 red;12 green;5 yellow;3 pink
+16 - 20 green;8 yellow;4 pink
+17 - 8 yellow
+18 - 80 green
+19 - 10 green;4 yellow;5 yellow;7 pink
+20 - 6 black
+21 - 14 pink
+22 - 8 white
+23 - 5 black;4 white
+24 - 1 camo
+25 - 31 yellow
+26 - 23 pink;4 zebra
+27 - 120 red;55 blue;45 green;45 yellow
+28 - 4 lead
+29 - 25 yellow;12 pink
+30 - 9 lead
+31 - 8 zebra;2 zebra
+32 - 25 black;28 white;8 lead
+33 - 20 camo
+34 - 140 yellow;5 zebra
+35 - 35 pink;25 white;5 rainbow
+36 - 81 pink
+37 - 20 black;20 white;7 camo;15 lead;10 zebra
+38 - 42 pink;17 white;14 lead;10 zebra;4 rainbow
+39 - 10 black;10 white;20 lead;20 zebra;18 rainbow
+40 - 1 MOAB
