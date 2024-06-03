@@ -27,7 +27,7 @@ public class BloonsTowerDefense extends JFrame implements ActionListener {
         gameTimer.start();
         game.requestFocus();
         add(cards);
-        setResizable(false);
+        setResizable(true);
         setVisible(true);
 
     }
