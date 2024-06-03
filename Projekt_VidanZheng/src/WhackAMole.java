@@ -3,38 +3,59 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class WhackAMole extends JFrame {
     private static final int GRID_SIZE = 4;
     private static final int MOLE_APPEARANCE_DELAY = 1000; // in milliseconds
+    private static final int GAME_DURATION = 30000; // Game duration in milliseconds (45 seconds)
+    private final Icon moleIcon;
+    private static final Color GRASS_GREEN = new Color(0, 204, 68);
 
     private JButton[][] buttons;
     private int score;
-    private Timer timer;
+    private JLabel scoreLabel;
+    private JLabel timeLabel;
+    private Timer moleTimer;
+    private Timer gameTimer;
+    private Timer countdownTimer;
     private Random random;
+    private ExecutorService executor;
+    private int remainingTime;
 
     public WhackAMole() {
-        super("Whack-a-Mole");
+        super("Whack A Mole");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 400);
-        setLayout(new GridLayout(GRID_SIZE, GRID_SIZE));
+        setSize(400, 450);
+        setLayout(new BorderLayout());
 
         buttons = new JButton[GRID_SIZE][GRID_SIZE];
         score = 0;
         random = new Random();
+        executor = Executors.newFixedThreadPool(3); // Allow up to 3 simultaneous moles
+        remainingTime = GAME_DURATION / 1000; // Convert to seconds
+
+        int buttonWidth = 400 / GRID_SIZE;
+        int buttonHeight = 400 / GRID_SIZE;
+        moleIcon = getScaledImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\WhackAMole.png", buttonWidth, buttonHeight);
 
         initializeButtons();
+        initializeScoreLabel();
+        initializeTimeLabel();
         startGame();
     }
 
     private void initializeButtons() {
+        JPanel gridPanel = new JPanel();
+        gridPanel.setLayout(new GridLayout(GRID_SIZE, GRID_SIZE));
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
                 JButton button = new JButton();
-                button.setBackground(Color.LIGHT_GRAY);
+                button.setBackground(GRASS_GREEN);
                 button.setOpaque(true);
                 buttons[i][j] = button;
-                add(button);
+                gridPanel.add(button);
 
                 int finalI = i;
                 int finalJ = j;
@@ -46,38 +67,82 @@ public class WhackAMole extends JFrame {
                 });
             }
         }
+        add(gridPanel, BorderLayout.CENTER);
+    }
+
+    private void initializeScoreLabel() {
+        scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
+        scoreLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        add(scoreLabel, BorderLayout.NORTH);
+    }
+
+    private void initializeTimeLabel() {
+        timeLabel = new JLabel("Time left: " + remainingTime + "s", SwingConstants.CENTER);
+        timeLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        add(timeLabel, BorderLayout.SOUTH);
     }
 
     private void startGame() {
-        timer = new Timer(MOLE_APPEARANCE_DELAY, new ActionListener() {
+        moleTimer = new Timer(MOLE_APPEARANCE_DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int randomX = random.nextInt(GRID_SIZE);
-                int randomY = random.nextInt(GRID_SIZE);
-                showMole(randomX, randomY);
+                int moleCount = random.nextInt(3) + 1; // 1 to 3 moles
+                for (int i = 0; i < moleCount; i++) {
+                    executor.execute(() -> {
+                        int randomX = random.nextInt(GRID_SIZE);
+                        int randomY = random.nextInt(GRID_SIZE);
+                        showMole(randomX, randomY);
+                    });
+                }
             }
         });
-        timer.start();
+        moleTimer.start();
+
+        gameTimer = new Timer(GAME_DURATION, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                endGame();
+            }
+        });
+        gameTimer.setRepeats(false);
+        gameTimer.start();
+
+        countdownTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                remainingTime--;
+                timeLabel.setText("Time left: " + remainingTime + "sec");
+                if (remainingTime <= 0) {
+                    countdownTimer.stop();
+                }
+            }
+        });
+        countdownTimer.start();
     }
 
     private void showMole(int x, int y) {
-        buttons[x][y].setBackground(Color.RED);
-        new Timer(MOLE_APPEARANCE_DELAY, new ActionListener() {
+        buttons[x][y].setIcon(moleIcon);
+        buttons[x][y].setBackground(GRASS_GREEN);
+        Timer hideTimer = new Timer(MOLE_APPEARANCE_DELAY, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 hideMole(x, y);
             }
-        }).start();
+        });
+        hideTimer.setRepeats(false);
+        hideTimer.start();
     }
 
     private void hideMole(int x, int y) {
-        buttons[x][y].setBackground(Color.LIGHT_GRAY);
+        buttons[x][y].setIcon(null);
+        buttons[x][y].setBackground(GRASS_GREEN);
     }
 
     private void handleButtonClick(int x, int y) {
-        if (buttons[x][y].getBackground() == Color.RED) {
+        if (buttons[x][y].getIcon() == moleIcon) {
             score++;
-            buttons[x][y].setBackground(Color.LIGHT_GRAY);
+            buttons[x][y].setIcon(null);
+            buttons[x][y].setBackground(GRASS_GREEN);
         } else {
             score--;
         }
@@ -85,7 +150,20 @@ public class WhackAMole extends JFrame {
     }
 
     private void updateScore() {
-        System.out.println("Score: " + score);
+        scoreLabel.setText("Score: " + score);
+    }
+
+    private void endGame() {
+        moleTimer.stop();
+        executor.shutdownNow();
+        JOptionPane.showMessageDialog(this, "Time's up! Your score is: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private ImageIcon getScaledImageIcon(String imagePath, int width, int height) {
+        ImageIcon icon = new ImageIcon(imagePath);
+        Image img = icon.getImage();
+        Image scaledImg = img.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaledImg);
     }
 
     public static void main(String[] args) {
