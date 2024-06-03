@@ -9,7 +9,7 @@ import java.util.concurrent.Executors;
 public class WhackAMole extends JFrame {
     private static final int GRID_SIZE = 4;
     private static final int MOLE_APPEARANCE_DELAY = 1000; // in milliseconds
-    private static final int GAME_DURATION = 30000; // Game duration in milliseconds (45 seconds)
+    private static final int GAME_DURATION = 30000; // in milliseconds (30 seconds)
     private final Icon moleIcon;
     private static final Color GRASS_GREEN = new Color(0, 204, 68);
 
@@ -77,7 +77,7 @@ public class WhackAMole extends JFrame {
     }
 
     private void initializeTimeLabel() {
-        timeLabel = new JLabel("Time left: " + remainingTime + "s", SwingConstants.CENTER);
+        timeLabel = new JLabel("Time left: " + remainingTime + " sec", SwingConstants.CENTER);
         timeLabel.setFont(new Font("Serif", Font.BOLD, 20));
         add(timeLabel, BorderLayout.SOUTH);
     }

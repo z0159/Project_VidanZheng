@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc4271a1-6da3-4733-9553-b354930b84a2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Snake_Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/WhackAMole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WhackAMole.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,9 +51,18 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.WhackAMole">
+  <component name="RunManager" selected="Application.Snake">
     <configuration name="BloonsTowerDefense" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="BloonsTowerDefense" />
+      <module name="Projekt_VidanZheng" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-22.0.1\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.graphics,javafx.media" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../3BI_SEW/javafx-sdk-21.0.1/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Snake" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Snake" />
       <module name="Projekt_VidanZheng" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-22.0.1\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.graphics,javafx.media" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../3BI_SEW/javafx-sdk-21.0.1/lib" />
@@ -76,11 +87,13 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Snake" />
       <item itemvalue="Application.BloonsTowerDefense" />
       <item itemvalue="Application.WhackAMole" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Snake" />
         <item itemvalue="Application.WhackAMole" />
         <item itemvalue="Application.BloonsTowerDefense" />
       </list>
@@ -99,7 +112,7 @@
       <workItem from="1715610197013" duration="916000" />
       <workItem from="1715780489950" duration="237000" />
       <workItem from="1716274247474" duration="175000" />
-      <workItem from="1717401565332" duration="3017000" />
+      <workItem from="1717401565332" duration="4552000" />
     </task>
     <servers />
   </component>
