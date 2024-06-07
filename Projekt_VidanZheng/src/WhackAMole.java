@@ -72,13 +72,13 @@ public class WhackAMole extends JFrame {
 
     private void initializeScoreLabel() {
         scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
-        scoreLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        scoreLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
         add(scoreLabel, BorderLayout.NORTH);
     }
 
     private void initializeTimeLabel() {
         timeLabel = new JLabel("Time left: " + remainingTime + " sec", SwingConstants.CENTER);
-        timeLabel.setFont(new Font("Serif", Font.BOLD, 20));
+        timeLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
         add(timeLabel, BorderLayout.SOUTH);
     }
 

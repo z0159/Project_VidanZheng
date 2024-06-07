@@ -28,6 +28,7 @@ public class Snake_Board extends JPanel implements ActionListener {
     private int dots;
     private int apple_x;
     private int apple_y;
+    private int score = 0;
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -110,7 +111,11 @@ public class Snake_Board extends JPanel implements ActionListener {
 
             gameOver(g);
         }
+        String scoreString = "Score: " + score;
+        g.setColor(Color.WHITE);
+        g.drawString(scoreString, 5, 15);
     }
+
 
     private void gameOver(Graphics g) {
 
@@ -129,6 +134,7 @@ public class Snake_Board extends JPanel implements ActionListener {
 
             dots++;
             locateApple();
+            score++;
         }
     }
 
