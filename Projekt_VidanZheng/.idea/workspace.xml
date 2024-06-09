@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc4271a1-6da3-4733-9553-b354930b84a2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Pong.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tetris_Board.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Tetris_Shape.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Arcade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Arcade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Snake_Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Snake_Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/WhackAMole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WhackAMole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Tetris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Tetris.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,15 +65,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="BloonsTowerDefense" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="BloonsTowerDefense" />
-      <module name="Projekt_VidanZheng" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-22.0.1\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.graphics,javafx.media" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../3BI_SEW/javafx-sdk-21.0.1/lib" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Pong" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Pong" />
       <module name="Projekt_VidanZheng" />
@@ -84,8 +74,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Snake" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Snake" />
+    <configuration name="SpaceInvaders" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="SpaceInvaders" />
+      <module name="Projekt_VidanZheng" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-22.0.1\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.graphics,javafx.media" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../3BI_SEW/javafx-sdk-21.0.1/lib" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Tetris" />
       <module name="Projekt_VidanZheng" />
       <option name="VM_PARAMETERS" value="--module-path &quot;C:\Program Files\javafx-sdk-22.0.1\lib&quot; --add-modules=javafx.base,javafx.controls,javafx.graphics,javafx.media" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/../../../3BI_SEW/javafx-sdk-21.0.1/lib" />
@@ -110,19 +109,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.Tetris" />
+      <item itemvalue="Application.SpaceInvaders" />
       <item itemvalue="Application.Pong" />
       <item itemvalue="Application.Arcade" />
-      <item itemvalue="Application.Snake" />
-      <item itemvalue="Application.BloonsTowerDefense" />
       <item itemvalue="Application.WhackAMole" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Arcade" />
+        <item itemvalue="Application.Tetris" />
+        <item itemvalue="Application.SpaceInvaders" />
         <item itemvalue="Application.Pong" />
         <item itemvalue="Application.WhackAMole" />
-        <item itemvalue="Application.Snake" />
-        <item itemvalue="Application.BloonsTowerDefense" />
       </list>
     </recent_temporary>
   </component>
@@ -142,7 +141,8 @@
       <workItem from="1717401565332" duration="9179000" />
       <workItem from="1717481614859" duration="2304000" />
       <workItem from="1717750343271" duration="3509000" />
-      <workItem from="1717949759585" duration="1374000" />
+      <workItem from="1717949759585" duration="1394000" />
+      <workItem from="1717956316139" duration="2550000" />
     </task>
     <servers />
   </component>
