@@ -42,12 +42,10 @@ public class Snake_Board extends JPanel implements ActionListener {
     private Image head;
 
     public Snake_Board() {
-
         initBoard();
     }
 
     private void initBoard() {
-
         addKeyListener(new TAdapter());
         setBackground(Color.black);
         setFocusable(true);
@@ -58,7 +56,6 @@ public class Snake_Board extends JPanel implements ActionListener {
     }
 
     private void loadImages() {
-
         ImageIcon iid = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\dot.png");
         ball = iid.getImage();
 
@@ -70,7 +67,6 @@ public class Snake_Board extends JPanel implements ActionListener {
     }
 
     private void initGame() {
-
         dots = 3;
 
         for (int z = 0; z < dots; z++) {
@@ -87,14 +83,11 @@ public class Snake_Board extends JPanel implements ActionListener {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-
         doDrawing(g);
     }
 
     private void doDrawing(Graphics g) {
-
         if (inGame) {
-
             g.drawImage(apple, apple_x, apple_y, this);
 
             for (int z = 0; z < dots; z++) {
@@ -106,19 +99,16 @@ public class Snake_Board extends JPanel implements ActionListener {
             }
 
             Toolkit.getDefaultToolkit().sync();
-
         } else {
-
             gameOver(g);
         }
+
         String scoreString = "Score: " + score;
         g.setColor(Color.WHITE);
         g.drawString(scoreString, 5, 15);
     }
 
-
     private void gameOver(Graphics g) {
-
         String msg = "Game Over";
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics metr = getFontMetrics(small);
@@ -129,9 +119,7 @@ public class Snake_Board extends JPanel implements ActionListener {
     }
 
     private void checkApple() {
-
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
-
             dots++;
             locateApple();
             score++;
@@ -139,7 +127,6 @@ public class Snake_Board extends JPanel implements ActionListener {
     }
 
     private void move() {
-
         for (int z = dots; z > 0; z--) {
             x[z] = x[(z - 1)];
             y[z] = y[(z - 1)];
@@ -163,9 +150,7 @@ public class Snake_Board extends JPanel implements ActionListener {
     }
 
     private void checkCollision() {
-
         for (int z = dots; z > 0; z--) {
-
             if ((z > 4) && (x[0] == x[z]) && (y[0] == y[z])) {
                 inGame = false;
             }
@@ -193,7 +178,6 @@ public class Snake_Board extends JPanel implements ActionListener {
     }
 
     private void locateApple() {
-
         int r = (int) (Math.random() * RAND_POS);
         apple_x = ((r * DOT_SIZE));
 
@@ -203,9 +187,7 @@ public class Snake_Board extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (inGame) {
-
             checkApple();
             checkCollision();
             move();
@@ -214,11 +196,15 @@ public class Snake_Board extends JPanel implements ActionListener {
         repaint();
     }
 
-    private class TAdapter extends KeyAdapter {
+    public void stopGame() {
+        if (timer != null) {
+            timer.stop();
+        }
+    }
 
+    private class TAdapter extends KeyAdapter {
         @Override
         public void keyPressed(KeyEvent e) {
-
             int key = e.getKeyCode();
 
             if ((key == KeyEvent.VK_LEFT) && (!rightDirection)) {

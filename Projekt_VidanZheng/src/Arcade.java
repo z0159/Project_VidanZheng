@@ -87,6 +87,8 @@ class ArcadePanel extends JPanel {
             arcade.showGameFrame(new BloonsTowerDefense());
         } else if (playerX == 4 && playerY == 0) {
             arcade.showGameFrame(new WhackAMole());
+        } else if (playerX == 0 && playerY == 4) {
+            arcade.showGameFrame(new Pong());
         }
     }
 
@@ -94,7 +96,6 @@ class ArcadePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-        // Draw the grid
         for (int y = 0; y < GRID_SIZE; y++) {
             for (int x = 0; x < GRID_SIZE; x++) {
                 g.drawRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
@@ -104,6 +105,7 @@ class ArcadePanel extends JPanel {
         drawMachine(g, 0, 0, "Snake");
         drawMachine(g, 2, 0, "Bloons");
         drawMachine(g, 4, 0, " Mole");
+        drawMachine(g, 0, 4, " Pong");
 
         g.setColor(Color.RED);
         int smallerSize = CELL_SIZE / 3;

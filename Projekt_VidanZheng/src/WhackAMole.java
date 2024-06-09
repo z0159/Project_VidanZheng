@@ -1,7 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -26,7 +25,7 @@ public class WhackAMole extends JFrame {
 
     public WhackAMole() {
         super("Whack A Mole");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setSize(400, 450);
         setLayout(new BorderLayout());
 
@@ -44,6 +43,13 @@ public class WhackAMole extends JFrame {
         initializeScoreLabel();
         initializeTimeLabel();
         startGame();
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                stopGame();
+            }
+        });
     }
 
     private void initializeButtons() {
@@ -111,7 +117,7 @@ public class WhackAMole extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 remainingTime--;
-                timeLabel.setText("Time left: " + remainingTime + "sec");
+                timeLabel.setText("Time left: " + remainingTime + " sec");
                 if (remainingTime <= 0) {
                     countdownTimer.stop();
                 }
@@ -154,9 +160,23 @@ public class WhackAMole extends JFrame {
     }
 
     private void endGame() {
-        moleTimer.stop();
-        executor.shutdownNow();
+        stopGame();
         JOptionPane.showMessageDialog(this, "Time's up! Your score is: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void stopGame() {
+        if (moleTimer != null) {
+            moleTimer.stop();
+        }
+        if (gameTimer != null) {
+            gameTimer.stop();
+        }
+        if (countdownTimer != null) {
+            countdownTimer.stop();
+        }
+        if (executor != null && !executor.isShutdown()) {
+            executor.shutdownNow();
+        }
     }
 
     private ImageIcon getScaledImageIcon(String imagePath, int width, int height) {
