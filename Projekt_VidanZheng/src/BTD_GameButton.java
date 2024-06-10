@@ -1,6 +1,10 @@
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ * Represents a game button in the Bloons Tower Defense game.
+ * Each button has unique attributes and behaviors based on its label.
+ */
 public class BTD_GameButton {
 
     public Image fastForwardImage1 = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\fastforwardoff.png").getImage();
@@ -12,6 +16,13 @@ public class BTD_GameButton {
     public int width;
     public int height;
 
+    /**
+     * Constructs a new game button with the specified label and initial position.
+     *
+     * @param label The label of the button.
+     * @param x The initial x-coordinate of the button.
+     * @param y The initial y-coordinate of the button.
+     */
     public BTD_GameButton(String label, int x, int y) {
         this.x = x;
         this.y = y;
@@ -64,13 +75,22 @@ public class BTD_GameButton {
                 height = 100;
             }
         }
-
     }
 
+    /**
+     * Gets the rectangle representing the button's current position and size.
+     *
+     * @return A BTD_Rect object representing the button's bounding box.
+     */
     public BTD_Rect getRect() {
         return new BTD_Rect(x, y, width, height);
     }
 
+    /**
+     * Gets the image associated with the button's current label.
+     *
+     * @return The image of the button.
+     */
     public Image getImage() {
         return currentFastForwardImage;
     }

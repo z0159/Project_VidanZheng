@@ -1,18 +1,23 @@
-import java.util.*;
-import java.io.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import java.io.*;
+import java.util.*;
 import javax.swing.Timer;
 
-
-
+/**
+ * The main class for the Bloons Tower Defense game. This class sets up the game window
+ * and initializes the game components, including a timer for game updates.
+ */
 public class BloonsTowerDefense extends JFrame implements ActionListener {
     public JPanel cards;
     public CardLayout cLayout;
     public Timer gameTimer;
     public GamePanel game;
 
+    /**
+     * Constructs a BloonsTowerDefense object and initializes the game window.
+     */
     public BloonsTowerDefense() {
         super("Bloons Tower Defense Simple");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -29,9 +34,14 @@ public class BloonsTowerDefense extends JFrame implements ActionListener {
         add(cards);
         setResizable(true);
         setVisible(true);
-
     }
 
+    /**
+     * Handles the action events, primarily for updating the game state on each timer tick.
+     *
+     * @param e the action event
+     */
+    @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
 
@@ -40,25 +50,29 @@ public class BloonsTowerDefense extends JFrame implements ActionListener {
                 game.update();
                 game.repaint();
             }
-            assert game != null;
-            if (!game.isRunning) {
-                assert gameTimer != null;
+            if (game != null && !game.isRunning) {
                 gameTimer.stop();
                 if (game.lives <= 0) {
                     System.exit(0);
                 }
             }
         }
-
     }
 
-
+    /**
+     * The main method to launch the Bloons Tower Defense game application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         BloonsTowerDefense frame = new BloonsTowerDefense();
     }
 }
 
-
+/**
+ * The GamePanel class represents the game area where the Bloons Tower Defense game
+ * is played. It handles game logic, rendering, and user interactions.
+ */
 class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
     private Image mapImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\map.png").getImage();
     public boolean isReady;
@@ -92,8 +106,10 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
     public LinkedList<BTD_Bloons> bloonsStoreList;
     public ArrayList<BTD_Dart> projectileList;
 
+    /**
+     * Constructs a GamePanel object and initializes the game variables and components.
+     */
     public GamePanel() {
-
         isRunning = true;
 
         monkeyList = new ArrayList<>();
@@ -118,8 +134,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
 
         try {
             scanner = new Scanner(new File("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\Round Data.txt"));
-        }
-        catch (IOException ignored) {
+        } catch (IOException ignored) {
         }
 
         scanner.nextLine();
@@ -144,9 +159,11 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         addMouseMotionListener(this);
         addMouseListener(this);
         addNotify();
-
     }
 
+    /**
+     * Clears the map of all projectiles and resets the attack timers for monkeys.
+     */
     public void clearMap() {
         projectileList.clear();
         for (int j = monkeyList.size() - 1; j >= 0; j--) {
@@ -154,17 +171,24 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         }
     }
 
+    /**
+     * Notifies the panel that it is ready to start the game.
+     */
+    @Override
     public void addNotify() {
         super.addNotify();
         isReady = true;
     }
 
+    /**
+     * Updates the game state, including the position of bloons, projectiles, and monkeys,
+     * and handles collision detection and game logic.
+     */
     public void update() {
         if (!fastForward) {
             try {
                 Thread.sleep(15);
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }
@@ -183,7 +207,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
             if (bloonsStoreList.size() > 0 && DelayCounter == DelayTick) {
                 DelayCounter = 0;
                 bloonsList.add(bloonsStoreList.pop());
-            }else if (bloonsStoreList.size() > 0) {
+            } else if (bloonsStoreList.size() > 0) {
                 DelayCounter++;
             }
             for (int i = bloonsList.size() - 1; i >= 0; i--) {
@@ -231,6 +255,9 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         }
     }
 
+    /**
+     * Adds new bloons to the game based on the current round data.
+     */
     public void addBloons() {
         int startingX = 380;
         int startingY = 1;
@@ -251,10 +278,15 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
             } else {
                 stopGame();
             }
-
         }
     }
 
+    /**
+     * Places a monkey at the specified mouse coordinates if placing is enabled.
+     *
+     * @param mx the x-coordinate of the mouse
+     * @param my the y-coordinate of the mouse
+     */
     public void place(int mx, int my) {
         if (isPlacingMonkey) {
             if (!currentMonkey.equals("")) {
@@ -263,6 +295,11 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         }
     }
 
+    /**
+     * Renders the game components, including the map, side bar, monkeys, bloons, and projectiles.
+     *
+     * @param g the graphics context
+     */
     @Override
     public void paintComponent(Graphics g) {
         Color colour;
@@ -274,7 +311,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
 
         sideBar.paintSideBar(g);
 
-        Graphics2D g2 = (Graphics2D)g;
+        Graphics2D g2 = (Graphics2D) g;
         Stroke stroke = new BasicStroke(4f);
         g2.setStroke(stroke);
 
@@ -283,7 +320,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
             if (currentMonkey.equals(btn.label)) {
                 g2.setColor(new Color(225, 0, 0));
                 g2.drawRect(btn.x - 2, btn.y - 2, btn.width + 2, btn.height + 2);
-            }else if (btn.getRect().contains(mouseX, mouseY)) {
+            } else if (btn.getRect().contains(mouseX, mouseY)) {
                 g2.setColor(new Color(255, 255, 255));
                 g2.drawRect(btn.x - 2, btn.y - 2, btn.width + 2, btn.height + 2);
             }
@@ -292,9 +329,9 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         g2.setColor(new Color(255, 255, 255));
         if (fastForwardButton.getRect().contains(mouseX, mouseY)) {
             g2.drawRect(fastForwardButton.x - 2, fastForwardButton.y - 2, fastForwardButton.width + 2, fastForwardButton.height + 2);
-        }else if (!roundIsRunning && startButton.getRect().contains(mouseX, mouseY)) {
+        } else if (!roundIsRunning && startButton.getRect().contains(mouseX, mouseY)) {
             g2.drawRect(startButton.x - 2, startButton.y - 2, startButton.width + 2, startButton.height + 2);
-        }else if (selectedMonkey != null && sellButton.getRect().contains(mouseX, mouseY)) {
+        } else if (selectedMonkey != null && sellButton.getRect().contains(mouseX, mouseY)) {
             g2.drawRect(sellButton.x - 2, sellButton.y - 2, sellButton.width + 2, sellButton.height + 2);
         }
 
@@ -330,8 +367,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
             if (money >= monkey.cost && monkey.getRect().isInside(new BTD_Rect(-50,
                     -50, 775 + 50, 570 + 50))) {
                 colour = new Color(0.2f, 0.2f, 0.2f, 0.8f);
-            }
-            else {
+            } else {
                 colour = new Color(0.5f, 0, 0, 0.8f);
             }
 
@@ -349,12 +385,17 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         sideBar.paintText(g);
     }
 
+    /**
+     * Stops the game by setting the running flag to false.
+     */
     public void stopGame() {
         isRunning = false;
     }
 
+    @Override
     public void mouseDragged(MouseEvent e) {}
 
+    @Override
     public void mouseMoved(MouseEvent e) {
         mouseX = e.getX();
         mouseY = e.getY();
@@ -363,9 +404,13 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         }
     }
 
+    @Override
     public void mouseEntered(MouseEvent e) {}
+
+    @Override
     public void mouseExited(MouseEvent e) {}
 
+    @Override
     public void mouseReleased(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1) {
             if (!isSelectingMonkey && isPlacingMonkey && monkey != null && money >= monkey.cost
@@ -393,13 +438,8 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
             }
 
             if (fastForwardButton.getRect().contains(mouseX, mouseY)) {
-                if (fastForward) {
-                    fastForward = false;
-                    fastForwardButton.currentFastForwardImage = fastForwardButton.fastForwardImage1;
-                }else{
-                    fastForward = true;
-                    fastForwardButton.currentFastForwardImage = fastForwardButton.fastForwardImage2;
-                }
+                fastForward = !fastForward;
+                fastForwardButton.currentFastForwardImage = fastForward ? fastForwardButton.fastForwardImage2 : fastForwardButton.fastForwardImage1;
             }
 
             if (sellButton.getRect().contains(mouseX, mouseY)) {
@@ -417,10 +457,7 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
                 DelayCounter = 0;
                 roundIsRunning = true;
             }
-
-        }
-
-        else if (e.getButton() == MouseEvent.BUTTON3) {
+        } else if (e.getButton() == MouseEvent.BUTTON3) {
             if (isPlacingMonkey) {
                 monkey = null;
                 isPlacingMonkey = false;
@@ -433,8 +470,9 @@ class GamePanel extends JPanel implements MouseMotionListener, MouseListener {
         }
     }
 
+    @Override
     public void mouseClicked(MouseEvent e) {}
 
+    @Override
     public void mousePressed(MouseEvent e) {}
-
 }

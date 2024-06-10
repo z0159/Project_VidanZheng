@@ -3,9 +3,16 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * The main class for the Arcade game. This class initializes the arcade frame
+ * and handles the display of individual game frames.
+ */
 public class Arcade extends JFrame {
     private JFrame currentGameFrame;
 
+    /**
+     * Constructs an Arcade object and initializes the arcade window.
+     */
     public Arcade() {
         setTitle("Arcade");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -18,6 +25,12 @@ public class Arcade extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Displays the specified game frame. If a game is already running, it closes
+     * the current game frame before opening the new one.
+     *
+     * @param gameFrame the JFrame of the game to be displayed.
+     */
     public void showGameFrame(JFrame gameFrame) {
         if (currentGameFrame != null) {
             currentGameFrame.dispose();
@@ -29,11 +42,20 @@ public class Arcade extends JFrame {
         gameFrame.setVisible(true);
     }
 
+    /**
+     * The main method to launch the Arcade application.
+     *
+     * @param args the command line arguments
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(Arcade::new);
     }
 }
 
+/**
+ * The panel class for the Arcade. This class represents the grid layout of the
+ * arcade and handles user input for navigating the grid and selecting games.
+ */
 class ArcadePanel extends JPanel {
     private static final int GRID_SIZE = 5;
     private static final int CELL_SIZE = 80;
@@ -44,6 +66,11 @@ class ArcadePanel extends JPanel {
     private int playerY = GRID_SIZE / 2;
     private final Arcade arcade;
 
+    /**
+     * Constructs an ArcadePanel object.
+     *
+     * @param arcade the parent Arcade object
+     */
     public ArcadePanel(Arcade arcade) {
         this.arcade = arcade;
         setPreferredSize(new Dimension(ARC_WIDTH, ARC_HEIGHT));
@@ -59,6 +86,11 @@ class ArcadePanel extends JPanel {
         });
     }
 
+    /**
+     * Handles key press events for navigating the arcade grid and selecting games.
+     *
+     * @param e the KeyEvent triggered by a key press
+     */
     private void handleKeyPress(KeyEvent e) {
         switch (e.getKeyCode()) {
             case KeyEvent.VK_LEFT:
@@ -80,6 +112,9 @@ class ArcadePanel extends JPanel {
         repaint();
     }
 
+    /**
+     * Opens the selected game based on the player's current position in the grid.
+     */
     private void enterMachine() {
         if (playerX == 0 && playerY == 0) {
             arcade.showGameFrame(new Snake());
@@ -94,6 +129,11 @@ class ArcadePanel extends JPanel {
         }
     }
 
+    /**
+     * Paints the arcade grid and game icons.
+     *
+     * @param g the Graphics object for drawing
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -116,6 +156,14 @@ class ArcadePanel extends JPanel {
         g.fillRect(playerX * CELL_SIZE + offset, playerY * CELL_SIZE + offset, smallerSize, smallerSize);
     }
 
+    /**
+     * Draws a game machine icon on the grid.
+     *
+     * @param g    the Graphics object for drawing
+     * @param x    the x-coordinate of the grid cell
+     * @param y    the y-coordinate of the grid cell
+     * @param text the text label of the game machine
+     */
     private void drawMachine(Graphics g, int x, int y, String text) {
         g.setColor(Color.BLUE);
         g.fillRect(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
