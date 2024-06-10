@@ -2,13 +2,7 @@ import java.util.*;
 import java.awt.*;
 import javax.swing.*;
 
-/**
- * Represents a bloon (balloon) in the Bloons Tower Defense game.
- * Each bloon has unique attributes and behaviors based on its type.
- */
 public class BTD_Bloons {
-
-    // Image files for different types of bloons and states
     private final Image redBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\red.png").getImage();
     private final Image blueBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\blue.png").getImage();
     private final Image greenBloonImage = new ImageIcon("C:\\Users\\kevin\\OneDrive\\Dokumente\\GitHub\\Project_VidanZheng\\Projekt_VidanZheng\\src\\Data Files\\green.png").getImage();
@@ -27,6 +21,7 @@ public class BTD_Bloons {
 
     public double x;
     public double y;
+
     public String type;
     public int health;
     public int money;
@@ -47,14 +42,7 @@ public class BTD_Bloons {
     private final int glueTime = 700;
     public int corners;
 
-    /**
-     * Constructs a new bloon with the specified type and initial position.
-     *
-     * @param bloonType The type of the bloon.
-     * @param x The initial x-coordinate of the bloon.
-     * @param y The initial y-coordinate of the bloon.
-     * @param corners The current corner the bloon is navigating to.
-     */
+
     public BTD_Bloons(String bloonType, double x, double y, int corners) {
         this.type = bloonType;
         this.x = x;
@@ -177,35 +165,28 @@ public class BTD_Bloons {
         isRemoved = false;
     }
 
-    /**
-     * Breaks the current bloon into smaller bloons when it is popped.
-     *
-     * @return A list of smaller bloons produced.
-     */
+
+
+
     public ArrayList<BTD_Bloons> breakIntoBloons() {
         ArrayList<BTD_Bloons> bloonsProduced = new ArrayList<>();
         switch (type) {
             case "blue" -> bloonsProduced.add(new BTD_Bloons("red", x, y, corners));
-            case "green" -> {
-                bloonsProduced.add(new BTD_Bloons("blue", x, y, corners));
-                bloonsProduced.add(new BTD_Bloons("blue", x, y, corners));
-            }
-            case "yellow" -> {
-                bloonsProduced.add(new BTD_Bloons("green", x, y, corners));
-                bloonsProduced.add(new BTD_Bloons("green", x, y, corners));
-            }
+            case "green" -> bloonsProduced.add(new BTD_Bloons("blue", x, y, corners));
+            case "yellow" -> bloonsProduced.add(new BTD_Bloons("green", x, y, corners));
             case "pink" -> bloonsProduced.add(new BTD_Bloons("yellow", x, y, corners));
-            case "black" -> {
+            case "black", "white" -> {
                 bloonsProduced.add(new BTD_Bloons("pink", x, y, corners));
                 bloonsProduced.add(new BTD_Bloons("pink", x, y, corners));
             }
-            case "white" -> {
-                bloonsProduced.add(new BTD_Bloons("pink", x, y, corners));
-                bloonsProduced.add(new BTD_Bloons("pink", x, y, corners));
+            case "camo" -> bloonsProduced.add(new BTD_Bloons("pink", x, y, corners));
+            case "lead" -> {
+                bloonsProduced.add(new BTD_Bloons("black", x, y, corners));
+                bloonsProduced.add(new BTD_Bloons("black", x, y, corners));
             }
             case "zebra" -> {
-                bloonsProduced.add(new BTD_Bloons("white", x, y, corners));
                 bloonsProduced.add(new BTD_Bloons("black", x, y, corners));
+                bloonsProduced.add(new BTD_Bloons("white", x, y, corners));
             }
             case "rainbow" -> {
                 bloonsProduced.add(new BTD_Bloons("zebra", x, y, corners));
@@ -218,67 +199,98 @@ public class BTD_Bloons {
             case "MOAB" -> {
                 bloonsProduced.add(new BTD_Bloons("ceramic", x, y, corners));
                 bloonsProduced.add(new BTD_Bloons("ceramic", x, y, corners));
-                bloonsProduced.add(new BTD_Bloons("ceramic", x, y, corners));
-                bloonsProduced.add(new BTD_Bloons("ceramic", x, y, corners));
             }
         }
         return bloonsProduced;
     }
 
-    /**
-     * Moves the bloon along its path based on its speed.
-     */
     public void move() {
-        if (isFrozen || isGlued) {
-            speed *= isFrozen ? 0.5 : 0.75;
-        }
-
-        // Example movement logic: Move right for demonstration purposes.
-        // This should be replaced with the actual pathfinding logic.
-        x += speed;
-
+        double movementSpeed = speed;
         if (isFrozen) {
-            freezeTimer--;
-            if (freezeTimer <= 0) {
-                isFrozen = false;
-            }
+            movementSpeed = 0;
+        }
+        if (isGlued) {
+            movementSpeed = (int)(movementSpeed / 2);
         }
 
-        if (isGlued) {
-            glueTimer--;
-            if (glueTimer <= 0) {
-                isGlued = false;
-            }
+        switch (corners){
+            case 0 -> {y += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(380, 125, 1, 1))) {
+                    corners += 1;
+                }}
+            case 1 -> {
+                x += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(595, 125, 1, 1))) {
+                    corners += 1;
+                }}
+            case 2 -> {y += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(595, 265, 1, 1))) {
+                    corners += 1;
+                }}
+            case 3 -> {x -= movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(445, 265, 1, 1))) {
+                    corners += 1;
+                }}
+            case 4 -> {y += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(445, 380, 1, 1))) {
+                    corners += 1;
+                }}
+            case 5 -> {x += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(595, 380, 1, 1))) {
+                    corners += 1;
+                }}
+            case 6 -> {y += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(595, 525, 1, 1))) {
+                    corners += 1;
+                }}
+            case 7 -> {x -= movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(110, 525, 1, 1))) {
+                    corners += 1;
+                }}
+            case 8 -> {y -= movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(110, 380, 1, 1))) {
+                    corners += 1;
+                }}
+            case 9 -> {x += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(315, 380, 5, 5))) {
+                    corners += 1;
+                }}
+            case 10 -> {y -= movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(315, 110, 5, 5))) {
+                    corners += 1;
+                }}
+            case 11 -> {x -= movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(155, 110, 5, 5))) {
+                    corners += 1;
+                }}
+            case 12 -> {y += movementSpeed;
+                if (getRect().overlaps(new BTD_Rect(155, 290, 5, 5))) {
+                    corners += 1;
+                }}
+            case 13 -> x -= movementSpeed;
+
         }
     }
 
-    /**
-     * Checks and updates the status of the bloon (e.g., frozen or glued state).
-     */
     public void statusCheck() {
         if (isFrozen) {
-            freezeTimer--;
-            if (freezeTimer <= 0) {
+            freezeTimer++;
+            if (freezeTimer == freezeTime) {
+                freezeTimer = 0;
                 isFrozen = false;
             }
         }
-
         if (isGlued) {
-            glueTimer--;
-            if (glueTimer <= 0) {
+            glueTimer++;
+            if (glueTimer == glueTime) {
+                glueTimer = 0;
                 isGlued = false;
             }
         }
     }
 
-    /**
-     * Gets the image associated with the bloon's current type.
-     *
-     * @return The image of the bloon.
-     */
     public Image getImage() {
         return switch (type) {
-            case "red" -> redBloonImage;
             case "blue" -> blueBloonImage;
             case "green" -> greenBloonImage;
             case "yellow" -> yellowBloonImage;
@@ -291,33 +303,21 @@ public class BTD_Bloons {
             case "rainbow" -> rainbowBloonImage;
             case "ceramic" -> ceramicBloonImage;
             case "MOAB" -> MOABBloonImage;
-            default -> null;
+            default -> redBloonImage;
         };
     }
 
-    /**
-     * Draws the bloon on the screen at its current position.
-     *
-     * @param g2 The graphics context.
-     */
     public void paint(Graphics2D g2) {
-        g2.drawImage(getImage(), (int)x, (int)y, null);
-
+        g2.drawImage(getImage(), (int)(x), (int)(y), null);
         if (isFrozen) {
-            g2.drawImage(freezeImage, (int)x, (int)y, null);
+            g2.drawImage(freezeImage, (int)(x), (int)(y), null);
         }
-
-        if (isGlued) {
-            g2.drawImage(gluedImage, (int)x, (int)y, null);
+        else if (isGlued) {
+            g2.drawImage(gluedImage, (int)(x), (int)(y), null);
         }
     }
 
-    /**
-     * Gets the rectangle representing the bloon's current position and size.
-     *
-     * @return A BTD_Rect object representing the bloon's bounding box.
-     */
     public BTD_Rect getRect() {
-        return new BTD_Rect((int)x, (int)y, (int)width, (int)height);
+        return new BTD_Rect((int)(x), (int)(y), (int)(width), (int)(height));
     }
 }

@@ -8,14 +8,23 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 
+/**
+ * The Pong class represents the main frame of the Pong game.
+ */
 public class Pong extends JFrame {
 
     private PongPanel pongPanel;
 
+    /**
+     * Constructs a new Pong game.
+     */
     public Pong() {
         initUI();
     }
 
+    /**
+     * Initializes the user interface components of the game.
+     */
     private void initUI() {
         pongPanel = new PongPanel();
         add(pongPanel);
@@ -34,6 +43,11 @@ public class Pong extends JFrame {
         });
     }
 
+    /**
+     * Main method to start the Pong game.
+     *
+     * @param args The command-line arguments (not used).
+     */
     public static void main(String[] args) {
         EventQueue.invokeLater(() -> {
             JFrame ex = new Pong();
@@ -42,6 +56,9 @@ public class Pong extends JFrame {
     }
 }
 
+/**
+ * The PongPanel class represents the main panel where the Pong game is played.
+ */
 class PongPanel extends JPanel implements ActionListener {
 
     private static final int WIDTH = 600;
@@ -70,6 +87,9 @@ class PongPanel extends JPanel implements ActionListener {
 
     private Timer timer;
 
+    /**
+     * Constructs a new PongPanel.
+     */
     public PongPanel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.BLACK);
@@ -80,6 +100,9 @@ class PongPanel extends JPanel implements ActionListener {
         timer.start();
     }
 
+    /**
+     * Stops the game by stopping the timer.
+     */
     public void stopGame() {
         timer.stop();
     }

@@ -5,6 +5,11 @@ import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * WhackAMole is a simple game where the player has to click on moles that randomly appear on a grid.
+ * Each mole clicked increases the player's score, while missing a mole decreases the score.
+ * The game lasts for a fixed duration, and the player's score is displayed at the end of the game.
+ */
 public class WhackAMole extends JFrame {
     private static final int GRID_SIZE = 4;
     private static final int MOLE_APPEARANCE_DELAY = 1000; // in milliseconds
@@ -23,6 +28,9 @@ public class WhackAMole extends JFrame {
     private ExecutorService executor;
     private int remainingTime;
 
+    /**
+     * Constructor to initialize the WhackAMole game.
+     */
     public WhackAMole() {
         super("Whack A Mole");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -52,6 +60,9 @@ public class WhackAMole extends JFrame {
         });
     }
 
+    /**
+     * Initializes the grid of buttons representing the game grid.
+     */
     private void initializeButtons() {
         JPanel gridPanel = new JPanel();
         gridPanel.setLayout(new GridLayout(GRID_SIZE, GRID_SIZE));
@@ -76,18 +87,27 @@ public class WhackAMole extends JFrame {
         add(gridPanel, BorderLayout.CENTER);
     }
 
+    /**
+     * Initializes the label to display the player's score.
+     */
     private void initializeScoreLabel() {
         scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
         scoreLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
         add(scoreLabel, BorderLayout.NORTH);
     }
 
+    /**
+     * Initializes the label to display the remaining time in the game.
+     */
     private void initializeTimeLabel() {
         timeLabel = new JLabel("Time left: " + remainingTime + " sec", SwingConstants.CENTER);
         timeLabel.setFont(new Font("Helvetica", Font.BOLD, 20));
         add(timeLabel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Starts the game by initiating timers for mole appearance, game duration, and countdown.
+     */
     private void startGame() {
         moleTimer = new Timer(MOLE_APPEARANCE_DELAY, new ActionListener() {
             @Override
@@ -126,6 +146,12 @@ public class WhackAMole extends JFrame {
         countdownTimer.start();
     }
 
+    /**
+     * Displays a mole icon at the specified position on the game grid.
+     *
+     * @param x The x-coordinate of the mole.
+     * @param y The y-coordinate of the mole.
+     */
     private void showMole(int x, int y) {
         buttons[x][y].setIcon(moleIcon);
         buttons[x][y].setBackground(GRASS_GREEN);
@@ -139,11 +165,24 @@ public class WhackAMole extends JFrame {
         hideTimer.start();
     }
 
+    /**
+     * Hides the mole icon at the specified position on the game grid.
+     *
+     * @param x The x-coordinate of the mole.
+     * @param y The y-coordinate of the mole.
+     */
     private void hideMole(int x, int y) {
         buttons[x][y].setIcon(null);
         buttons[x][y].setBackground(GRASS_GREEN);
     }
 
+    /**
+     * Handles the button click event when a player clicks on a button.
+     * If the clicked button contains a mole icon, the player's score is increased.
+     *
+     * @param x The x-coordinate of the clicked button.
+     * @param y The y-coordinate of the clicked button.
+     */
     private void handleButtonClick(int x, int y) {
         if (buttons[x][y].getIcon() == moleIcon) {
             score++;
@@ -155,15 +194,24 @@ public class WhackAMole extends JFrame {
         updateScore();
     }
 
+    /**
+     * Updates the score label with the current score.
+     */
     private void updateScore() {
         scoreLabel.setText("Score: " + score);
     }
 
+    /**
+     * Ends the game by stopping all timers and displaying the final score.
+     */
     private void endGame() {
         stopGame();
         JOptionPane.showMessageDialog(this, "Time's up! Your score is: " + score, "Game Over", JOptionPane.INFORMATION_MESSAGE);
     }
 
+    /**
+     * Stops the game by stopping all timers and shutting down the executor service.
+     */
     private void stopGame() {
         if (moleTimer != null) {
             moleTimer.stop();
@@ -179,6 +227,14 @@ public class WhackAMole extends JFrame {
         }
     }
 
+    /**
+     * Scales an image icon to the specified width and height.
+     *
+     * @param imagePath The path to the image file.
+     * @param width     The width to scale the image to.
+     * @param height    The height to scale the image to.
+     * @return The scaled image icon.
+     */
     private ImageIcon getScaledImageIcon(String imagePath, int width, int height) {
         ImageIcon icon = new ImageIcon(imagePath);
         Image img = icon.getImage();
@@ -186,6 +242,11 @@ public class WhackAMole extends JFrame {
         return new ImageIcon(scaledImg);
     }
 
+    /**
+     * Main method to start the WhackAMole game.
+     *
+     * @param args The command-line arguments (not used).
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
