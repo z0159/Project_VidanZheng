@@ -126,6 +126,8 @@ class ArcadePanel extends JPanel {
             arcade.showGameFrame(new Pong());
         } else if (playerX == 2 && playerY == 4) {
             arcade.showGameFrame(new Tetris());
+        } else if (playerX == 4 && playerY == 4) {
+            arcade.showGameFrame(new GrapplingHook());
         }
     }
 
@@ -149,6 +151,7 @@ class ArcadePanel extends JPanel {
         drawMachine(g, 4, 0, " Mole");
         drawMachine(g, 0, 4, " Pong");
         drawMachine(g, 2, 4, "Tetris");
+        drawMachine(g, 4, 4, "Hook");
 
         g.setColor(Color.RED);
         int smallerSize = CELL_SIZE / 3;
