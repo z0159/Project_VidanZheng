@@ -153,7 +153,7 @@ class ArcadePanel extends JPanel {
         drawMachine(g, 2, 4, "Tetris");
         drawMachine(g, 4, 4, "Hook");
 
-        g.setColor(Color.RED);
+        g.setColor(new Color(255, 0, 0, 128));
         int smallerSize = CELL_SIZE / 3;
         int offset = (CELL_SIZE - smallerSize) / 2;
         g.fillRect(playerX * CELL_SIZE + offset, playerY * CELL_SIZE + offset, smallerSize, smallerSize);

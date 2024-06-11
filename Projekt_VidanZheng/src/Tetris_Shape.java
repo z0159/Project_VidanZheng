@@ -6,7 +6,7 @@ import java.util.Random;
  */
 public class Tetris_Shape {
     /** Enumeration of Tetrominoes shapes. */
-    enum Tetrominoes {
+    static enum Tetrominoes {
         /** No Shape */ NoShape,
         /** Z Shape */ ZShape,
         /** S Shape */ SShape,
